@@ -3,14 +3,13 @@ import zlib
 from bs4 import BeautifulSoup
 
 from models.list_item import ListItem
+from utils.config import DATABASE_URL
 from utils.database import create_connection
 from utils.logger import logger
 
-DATABASE = "rent_portal.sqlite"
-
 
 def main():
-    with create_connection(DATABASE) as conn:
+    with create_connection(DATABASE_URL) as conn:
         cur = conn.cursor()
 
         pages = []
