@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from datalite import datalite
 from itertools import count
+
+from datalite import datalite
 
 
 @datalite(db_path="rent_portal.sqlite")

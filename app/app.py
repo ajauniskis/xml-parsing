@@ -33,7 +33,7 @@ def main():
                 try:
                     list_item = ListItem(list_row)
                     table_model = list_item.convert_to_table_model()
-                    table_model.create_entry()
+                    table_model.create_entry()  # pyright: ignore [reportGeneralTypeIssues]
                 except AttributeError as e:
                     logger.warning(f"Could not parse item: {list_row} to {ListItem}")
 
