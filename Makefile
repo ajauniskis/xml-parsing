@@ -7,3 +7,6 @@ install: venv_setup
 
 venv_setup:
 	python3.10 -m venv $(venv_dir)
+
+run:
+	poetry run python3 app/app.py
