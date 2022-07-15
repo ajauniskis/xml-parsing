@@ -8,7 +8,7 @@ from datalite import datalite
 @dataclass
 class Measurements:
     field(default_factory=count().__next__, init=False)
-    href: str
+    url: str
     price: int
     rooms: int
     area: float

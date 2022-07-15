@@ -33,7 +33,7 @@ class ListItem:
 
     def convert_to_table_model(self) -> Measurements:
         table = Measurements(
-            href=self.href,
+            url=self.href,
             price=self.price,
             rooms=self.rooms,
             area=self.area,
