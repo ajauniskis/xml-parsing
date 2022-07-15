@@ -26,12 +26,16 @@ def main():
         i = 1
         for page in pages:
             logger.info(f"Parsing page {i}/{len(pages)}")
+
             soup = BeautifulSoup(page, "html.parser")
             list_rows = soup.findAll("tr", {"class", "list-row"})
+
             logger.info(f"Found {len(list_rows)} items in page {i}/{len(pages)}")
+
             for list_row in list_rows:
                 try:
                     list_item = ListItem(list_row)
+
                     table_model = list_item.convert_to_table_model()
                     table_model.create_entry()  # pyright: ignore [reportGeneralTypeIssues]
                 except AttributeError as e:
