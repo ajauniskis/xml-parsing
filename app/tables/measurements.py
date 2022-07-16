@@ -10,6 +10,6 @@ from utils.config import DATABASE_URL
 class Measurements:
     field(default_factory=count().__next__, init=False)
     url: str
-    price: int
+    price: float
     rooms: int
     area: float
