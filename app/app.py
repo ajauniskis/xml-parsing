@@ -15,15 +15,19 @@ from utils.logger import logger
 def get_avg_price(cursor: Cursor) -> float:
     sql = "SELECT AVG(price) FROM measurements"
 
+    logger.info(f"Executing sql query: {sql}")
     result = cursor.execute(sql).fetchall()
+
     return result[0][0]
 
 
 def get_avg_price_3_room(cursor: Cursor) -> Tuple[int, float]:
     sql_count = "SELECT COUNT(*) FROM measurements WHERE rooms = 3"
+    logger.info(f"Executing sql query: {sql_count}")
     count_result = cursor.execute(sql_count).fetchall()
 
     sql_avg = "SELECT AVG(price) FROM measurements WHERE rooms = 3"
+    logger.info(f"Executing sql query: {sql_avg}")
     avg_result = cursor.execute(sql_avg).fetchall()
 
     return count_result[0][0], avg_result[0][0]
@@ -34,6 +38,7 @@ def get_top_area(
     top_number: int,
 ) -> List[OrderedDict[str, str | float | int]]:
     sql = f"SELECT obj_id, area, price, rooms, url FROM measurements ORDER BY area DESC LIMIT {top_number}"
+    logger.info(f"Executing sql query: {sql}")
     result = cursor.execute(sql).fetchall()
 
     objects = []
@@ -95,6 +100,7 @@ def main():
     with create_connection(DATABASE_URL) as conn:
         cur = conn.cursor()
 
+        logger.info(f"Running sql queries for analysis")
         avg_price = get_avg_price(cur)
         avg_price_3_room = get_avg_price_3_room(cur)
         top_area_5 = get_top_area(cur, 5)
