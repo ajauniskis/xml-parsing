@@ -18,10 +18,10 @@ class ListItem:
         href = list_photo.find("a", href=True)["href"]
         return href
 
-    def _get_price(self, list_item) -> int:
+    def _get_price(self, list_item) -> float:
         list_address = list_item.find("td", {"class": "list-adress"})
         list_item_price = list_address.find("span", {"class", "list-item-price"}).text
-        return int(re.sub(" |€", "", list_item_price))
+        return float(re.sub(" |€", "", list_item_price))
 
     def _get_room_num(self, list_item) -> int:
         list_room_num = list_item.find("td", {"class": "list-RoomNum"}).text.strip()
