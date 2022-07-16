@@ -2,7 +2,7 @@ import json
 import zlib
 from collections import OrderedDict
 from sqlite3 import Cursor
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 
 from bs4 import BeautifulSoup
 
